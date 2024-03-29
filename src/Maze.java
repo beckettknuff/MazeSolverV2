@@ -147,6 +147,12 @@ public class Maze {
      */
     public boolean isValidCell(int row, int col) {
         // TODO: Complete this function
-        return true;
+        // This is to check if the cell is within the valid or playable areas of the maze
+        // Check the boundaries of the cell and return false if the cell is invalid (not to visit)
+        if (row < 0 || row >= this.numRows || col < 0 || col >= this.numCols) {
+            return false;
+        }
+        // Return to check if the cell is not a wall or unexplored altogether
+        return !this.mazeGrid[row][col].isWall() && !this.mazeGrid[row][col].isExplored();
     }
 }
