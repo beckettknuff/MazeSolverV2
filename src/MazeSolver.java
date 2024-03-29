@@ -5,6 +5,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class MazeSolver {
     private Maze maze;
@@ -29,7 +30,22 @@ public class MazeSolver {
     public ArrayList<MazeCell> getSolution() {
         // TODO: Get the solution from the maze
         // Should be from start to end cells
-        return null;
+        // Remember to reverse the stack in order
+        Stack<MazeCell> stack = new Stack<>();
+        // The actual path in the maze
+        ArrayList<MazeCell> path = new ArrayList<>();
+        MazeCell current = this.maze.getEndCell();
+        while (current != null) {
+            // push each cell on the stack
+            stack.push(current);
+            // once on top move to the parent cell
+            current = current.getParent();
+        }
+        // Now pop each cell I added to the stack to reverse the order (add to the winning path)
+        while (!stack.isEmpty()) {
+            path.add(stack.pop());
+        }
+        return path;
     }
 
     /**
