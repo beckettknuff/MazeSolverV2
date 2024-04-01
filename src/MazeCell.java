@@ -51,4 +51,5 @@ public class MazeCell {
     public void setWall(boolean wall) {
         this.isWall = wall;
     }
+
 }
